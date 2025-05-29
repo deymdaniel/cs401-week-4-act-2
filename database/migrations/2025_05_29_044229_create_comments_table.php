@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id()->comment('Primary key');
+            $table->text('comment_content')->comment('Content of the comment');
+            $table->timestamp('comment_date')->comment('Date and time of the comment');
+            $table->string('reviewer_name')->comment('Name of the reviewer');
+            $table->string('reviewer_email')->comment('Email of the reviewer');
+            $table->boolean('is_hidden')->default(false)->comment('Is the comment hidden?');
         });
     }
 

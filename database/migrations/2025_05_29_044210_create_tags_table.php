@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id()->comment('Primary key');
+            $table->string('tag_name')->comment('Tag name');
+            $table->string('slug')->comment('URL-friendly version of the tag name');
+            $table->timestamps(); // Laravel created_at and updated_at
         });
     }
 
