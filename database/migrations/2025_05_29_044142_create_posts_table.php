@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('Status')->comment('The status of the post (D - Draft, P - Published, I - Inactive)');
             $table->string('Featured_image_url')->comment('The URL of the featured image for the post');
             $table->integer('Views_count')->comment('The number of views the post has received')->default(0);
-            $table->timestamps();
         });
     }
 
