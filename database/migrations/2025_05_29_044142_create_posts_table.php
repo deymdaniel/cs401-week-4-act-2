@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('Title')->comment('The title of the post');
             $table->text('Content')->comment('The content of the post');
-            $table->String('Slug')->unique()->comment('The unique slug for the post');
+            $table->String('Slug')->comment('The unique slug for the post');
             $table->timestamp('Publication_Date')->nullable()->comment('The date and time when the post was published');
             $table->timestamp("Last_modified_date")->nullable()->comment('The date and time when the post was last modified');
             $table->string('Status')->comment('The status of the post (D - Draft, P - Published, I - Inactive)');
