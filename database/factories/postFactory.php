@@ -3,28 +3,23 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use App\Models\User;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\post>
- */
 class postFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
-        $status = fake()->randomElement(['published', 'draft', 'inactive']);
-        $title = fake()->title();
+        $status = $this->faker->randomElement(['published', 'draft', 'inactive']);
+        $title = $this->faker->sentence();
         return [
-            "title"=> $title,
-            "slug"=> Str::slug($title),
-            "content"=> fake()->paragraph(),
-            "publication_date"=> $status == 'published' ?  now() : null,
-            "status"=> $status,
-            "featured_image_url"=> fake()->imageUrl(640, 480, 'cats', true, 'Faker'),
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'content' => $this->faker->paragraph(),
+            'publication_date' => $status === 'published' ? now() : null,
+            'status' => $status,
+            'featured_image_url' => $this->faker->imageUrl(640, 480, 'cats', true, 'Faker'),
+            'user_id' => User::factory(), // associate with a user
         ];
     }
 }

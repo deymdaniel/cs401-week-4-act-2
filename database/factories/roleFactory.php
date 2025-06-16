@@ -4,20 +4,15 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\role>
- */
 class roleFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
-        return [
-            //
+        $roles = [
+            ['role_name' => 'Admin', 'description' => 'Administrator with full access'],
+            ['role_name' => 'Contributor', 'description' => 'Can write and edit own posts'],
+            ['role_name' => 'Subscriber', 'description' => 'Can read and comment on posts'],
         ];
+        return $this->faker->randomElement($roles);
     }
 }
